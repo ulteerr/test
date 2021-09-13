@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+}
+.error{
+  width: 50%;
+  border-radius: 20px;
+  margin: 100px auto;
+  background: #E5E5E5;
+  font-size: 50px;
+  color: #000;
+  text-align: center;
+}
+.filters {
+  position: absolute;
+  width: 130px;
+  height: 130px;
+  left: 50px;
+  top: 100px;
+  background: #F8F8F8;
+  border-radius: 20px;
+  padding: 10px 10px 10px 10px;
+
+  .btn-hidden_all {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    width: 50%;
+    height: 30%;
+    top: 90px;
+    margin-left: 20px;
+
+    background: #DCDCDC;
+    border-radius: 20px;
+    border: none;
+  }
+
+  .btn-hidden {
+    position: relative;
+    padding: 5px 20px;
+    background: #F8F8F8;
+    border: none;
+  }
+
+  span {
+    font-size: 10px;
+    font-weight: 400;
+    padding: 0 0 0 5px;
+  }
+
+}
+
+.hidden-column[data-hidden = 'off'] {
+  content: url('../img/off.svg');
+}
+
+.hidden-column[data-hidden = 'on'] {
+  content: url('../img/on.svg');
+}
+
+.hidden-column1[data-hidden = 'off'] {
+  content: url('../img/off1.svg');
+}
+
+.hidden-column1[data-hidden = 'on'] {
+  content: url('../img/on1.svg');
+}
+.hidden-column2[data-hidden = 'off'] {
+  content: url('../img/off2.svg');
+}
+
+.hidden-column2[data-hidden = 'on'] {
+  content: url('../img/on2.svg');
+}
+.hidden-column3[data-hidden = 'off'] {
+  content: url('../img/off3.svg');
+}
+
+.hidden-column3[data-hidden = 'on'] {
+  content: url('../img/on3.svg');
+}
+
+.hidden-1 .data-row td:nth-child(1),
+.hidden-1 tr th:nth-child(1) {
+  display: none;
+}
+
+.hidden-2 .data-row td:nth-child(2),
+.hidden-2 tr th:nth-child(2) {
+  display: none;
+}
+
+.hidden-3 .data-row td:nth-child(3),
+.hidden-3 tr th:nth-child(3) {
+  display: none;
+}
+
+.hidden-4 .data-row td:nth-child(4),
+.hidden-4 tr th:nth-child(4) {
+  display: none;
+}
+
+.hidden-column,
+.hidden-column1,
+.hidden-column2,
+.hidden-column3
+{
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  bottom: 15%;
+  right: 0;
+}
+
+.table {
+  width: 50%;
+  border-radius: 20px;
+  margin: auto;
+  background: #E5E5E5;
+
+  th {
+    cursor: pointer;
+  }
+
+  th.selected[data-order="1"],
+  th.selected[data-order="-1"] {
+    position: relative;
+  }
+
+  th.selected[data-order="1"]::after,
+  th.selected[data-order="-1"]::after {
+    position: absolute;
+  }
+
+  th.selected[data-order="-1"]::after {
+    content: "▼"
+  }
+
+  th.selected[data-order="1"]::after {
+    content: "▲"
+  }
+
+  .fn {
+    border-radius: 20px;
+    background: #BBE2D6;
+    width: 15%;
+  }
+
+  .ln {
+    border-radius: 20px;
+    background: #BBCBE2;
+    width: 15%;
+  }
+
+  .a {
+    border-radius: 20px;
+    background: #C3BBE2;
+  }
+  .ec {
+    border-radius: 20px;
+    background-color: #DDBBE2;
+    width: 15%;
+  }
+
+  .main-data {
+    border-color: lightslategray;
+  }
+
+  ._cell {
+    text-align: center;
+    padding: 10px 0px;
+    font-size: 12px;
+
+    .colored-eye {
+      svg {
+        width: 35px;
+        height: 35px;
+      }
+    }
+  }
+}
+
+.form-wrapper {
+  border: 1px solid black;
+  border-radius: 20px;
+  position: absolute;
+  padding: 10px;
+  display: none;
+  background: #F8F8F8;
+
+  .form p {
+    margin: 10px;
+  }
+
+  .form input {
+    float: right;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 5px 0 0 5px;
+  }
+
+  .form textarea {
+    border-radius: 5px;
+    padding: 5px 0 0 5px;
+  }
+
+  .btn {
+    width: 49%;
+    height: 30px;
+    border-radius: 20px;
+    border: none;
+    background: #DCDCDC;
+    cursor: pointer;
+  }
+
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  margin-left: 25%;
+  top: 700px;
+  width: 50%;
+  height: 40px;
+  background: linear-gradient(90deg, #DDBBE2 0%, #BBE2D6 100%);
+  border-radius: 20px;
+
+  .pagination-number {
+    margin-left: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+    cursor: pointer;
+    width: 100px;
+    height: 35px;
+    left: 729px;
+    top: 858px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 35px;
+
+    color: #000000;
+  }
+
+  .pagination-number:active {
+    background: linear-gradient(180deg, #F1F1F1 0%, #D6C5E0 100%);
+    border-radius: 20px;
+  }
+
+  .current-pagination {
+    background: linear-gradient(180deg, #F1F1F1 0%, #D6C5E0 100%);
+    border-radius: 20px;
+  }
+}

@@ -1,0 +1,1 @@
+function getData(){return fetch("./db/db.json").then(r=>{if(r.ok)return r.json();throw new Error("No data received, error: "+r.status)}).catch(r=>{console.warn(r),document.body.innerHTML='<div class="error">Error! Data not available</div>'})}export{getData};

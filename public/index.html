@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>infotecs</title>
+    <link rel="stylesheet" href="css/main.min.css">
+</head>
+<body>
+<!-- Создаем блог с кнопками, который будет скрывать все и/или блок-->
+<div class="filters">
+    <button class="btn-hidden_all ">Hide All</button>
+    <div>
+        <button class='btn-hidden'><span class='hidden-column' data-hidden='off'></span></button>
+        <span>Name</span></div>
+    <div>
+        <button class='btn-hidden'><span class='hidden-column1' data-hidden='off'></span></button>
+        <span>Surname</span></div>
+    <div>
+        <button class='btn-hidden'><span class='hidden-column2' data-hidden='off'></span></button>
+        <span>Description</span>
+    </div>
+    <div>
+        <button class='btn-hidden'><span class='hidden-column3' data-hidden='off'></span></button>
+        <span>Eye Color</span>
+    </div>
+</div>
+<!--Создаем отдельный div, чтобы скрывать все ненужный элементы принажатии кнопки-->
+<div class="container">
+    <!--Создаем заголовок таблицы и саму таблицу-->
+    <table class='table'>
+        <thead>
+        <tr>
+            <th class='first-name _cell fn'>Name</th>
+            <th class='last-name _cell ln'>Surname</th>
+            <th class='about _cell a'>Description</th>
+            <th class='eye-color _cell ec'>Eye Color</th>
+        </tr>
+        </thead>
+        <!-- Генерация таблицы через JS-->
+        <tbody class='main-data'>
+
+        </tbody>
+    </table>
+    <!-- Редактирование таблицы-->
+    <div class='form-wrapper'>
+        <form action="" class='form'>
+            <p>Name: <input type="text"></p>
+            <p>Surname: <input type="text"></p>
+            <p>Description: <textarea name="about" cols="30" rows="5"></textarea></p>
+            <p>Eye Color: <input type="text"></p>
+        </form>
+        <button class='btn btn-edit'>Edit</button>
+        <button class='btn btn-close'>Close</button>
+    </div>
+</div>
+<script type="module" src="js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+function splitArray(r,e=10){const l=[],i=Math.ceil(r.length/e);for(let t=0;t<i;t++)l[t]=r.slice(t*e,t*e+e);return l}export{splitArray};
