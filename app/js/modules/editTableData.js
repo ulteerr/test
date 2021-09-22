@@ -1,5 +1,5 @@
-import {renderCell} from './renderTable.js';
-import {splitArray} from './splitArray.js';
+import {renderCell} from './renderTable.js'
+import {splitArray} from './splitArray.js'
 
 //Форма редактирования
 function editTableData(jsonData) {
@@ -14,12 +14,12 @@ function editTableData(jsonData) {
 
     //Используется делегирование событий. При клике на таблицу получает строку по которой кликнули и отображает рядом с ней форму редактирования
     table.addEventListener('click', function (event) {
-        const row = event.target.closest('.data-row'); //возвращает ближайщего предка соответствующего селектору.
+        const row = event.target.closest('.data-row') //возвращает ближайщего предка соответствующего селектору.
 
         CHANGE_ROW = row;
 
         if (!row) return; //проверка, содержит ли в себе event.target строку row
-        if (!table.contains(row)) return; //проверка, прендалежит ли row нашей таблице.
+        if (!table.contains(row)) return //проверка, прендалежит ли row нашей таблице.
         // При клике появляется форма
         editForm.style.cssText = `display: block;  top: ${row.offsetTop}px; left: ${row.offsetWidth + 20}px;`
         // Создаем функцию, что бы можно было передвигать форму, как нам удобно
@@ -30,17 +30,17 @@ function editTableData(jsonData) {
 
 
 
-            moveAt(event.pageX, event.pageY);
+            moveAt(event.pageX, event.pageY)
 
             // переносит форму на координаты (pageX, pageY),
             // дополнительно учитывая изначальный сдвиг относительно указателя мыши
             function moveAt(pageX, pageY) {
-                editForm.style.left = pageX - shiftX + 'px';
-                editForm.style.top = pageY - shiftY + 'px';
+                editForm.style.left = pageX - shiftX + 'px'
+                editForm.style.top = pageY - shiftY + 'px'
             }
 
             function onMouseMove(event) {
-                moveAt(event.pageX, event.pageY);
+                moveAt(event.pageX, event.pageY)
             }
 
             // передвигаем форму при событии mousemove
@@ -49,30 +49,30 @@ function editTableData(jsonData) {
             // отпустить форму, удалить ненужные обработчики
             editForm.onmouseup = function() {
                 document.removeEventListener('mousemove', onMouseMove);
-                editForm.onmouseup = null;
-            };
+                editForm.onmouseup = null
+            }
 
-        };
+        }
         // Убираем раздваивание, если оно будет присутсвовать
         editForm.ondragstart = function() {
-            return false;
-        };
+            return false
+        }
         // Заполняем форму значениями
-        inputs[0].value = row.cells[0].innerHTML;
-        inputs[1].value = row.cells[1].innerHTML;
-        textarea.value = row.cells[2].innerHTML.slice(0, row.cells[2].innerHTML.length - 3);
+        inputs[0].value = row.cells[0].innerHTML
+        inputs[1].value = row.cells[1].innerHTML
+        textarea.value = row.cells[2].innerHTML.slice(0, row.cells[2].innerHTML.length - 3)
         // Чтобы не было в поле с цветом лишних элементов и пробелов
         inputs[2].value = row.cells[3].firstChild.style.cssText.replace('fill:', '').slice(0, -1)
-            .split(' ').join('');
+            .split(' ').join('')
 
-    });
+    })
 
     //При нажатии на кнопку редактирования btnEdit содержимое ячеек строки заменяется на содержимое формы
     btnEdit.addEventListener('click', () => {
-        const jsonData = JSON.parse(localStorage.getItem('jsonData'));
+        const jsonData = JSON.parse(localStorage.getItem('jsonData'))
 
         //узнаем длину массива, что бы узнать arraySize из функции splitArray. На случай если сделаю чтобы юзер задавал значение arraySize
-        const rowAmount = splitArray(jsonData.JSON).length;
+        const rowAmount = splitArray(jsonData.JSON).length
         const editedRow = {
             id: CHANGE_ROW.id,
             name: {
@@ -88,18 +88,18 @@ function editTableData(jsonData) {
 
         jsonData.JSON.forEach((item, i, arr) => {
             if (item.id === CHANGE_ROW.id) {
-                arr.splice(i, 1, editedRow);
+                arr.splice(i, 1, editedRow)
                 editedRowIndex = i + 1;
             }
         })
 
-        localStorage.setItem(jsonData, JSON.stringify(jsonData));
-        editForm.style = '';
+        localStorage.setItem(jsonData, JSON.stringify(jsonData))
+        editForm.style = ''
 
-        renderCell(jsonData, Math.ceil(editedRowIndex / (jsonData.JSON.length / rowAmount))); // (jsonData.length / rowAmount) - arraySize из функции splitArray
+        renderCell(jsonData, Math.ceil(editedRowIndex / (jsonData.JSON.length / rowAmount))) // (jsonData.length / rowAmount) - arraySize из функции splitArray
     });
 
-    btnClose.addEventListener('click', () => editForm.style = ''); // закрывает форму редактирования.
+    btnClose.addEventListener('click', () => editForm.style = '') // закрывает форму редактирования.
 }
 
-export {editTableData};
+export {editTableData}

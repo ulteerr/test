@@ -1,5 +1,5 @@
-import {splitArray} from './splitArray.js';
-import {eyeColor} from './eyeColor.js';
+import {splitArray} from './splitArray.js'
+import {eyeColor} from './eyeColor.js'
 
 //прорисовка таблицы. Создает строку таблицы с ячейками данных и добавляет их в tbody.
 //При прорисовке данных в колонке "Описание" обрезает about до длины th "Описание" (aboutLength ) деленное на 4.
@@ -17,10 +17,10 @@ function renderCell(jsonData, pagNum = 1) {
     tableData.innerHTML = '';
 
     peopleCards.forEach((element) => {
-        const rowTable = document.createElement('tr');
+        const rowTable = document.createElement('tr')
 
-        rowTable.setAttribute('id', element.id);
-        rowTable.className = 'data-row';
+        rowTable.setAttribute('id', element.id)
+        rowTable.className = 'data-row'
         rowTable.innerHTML = `
         <td class='first-name _cell' data-type='text'>${element.name.firstName}</td>
         <td class='last-name _cell' data-type='text'>${element.name.lastName}</td>
@@ -28,9 +28,9 @@ function renderCell(jsonData, pagNum = 1) {
         <td class='eye-color _cell' data-type='text'>${element.eyeColor}</td>
     `;
 
-        tableData.append(rowTable);
+        tableData.append(rowTable)
 
-        const td = rowTable.querySelector('.eye-color');
+        const td = rowTable.querySelector('.eye-color')
         eyeColor(td); // функция закрашивает ячейку "цвет глаз" в соотвутсвующий цвет
     });
 }
@@ -41,50 +41,50 @@ function renderPagination(jsonData) {
         table = document.querySelector('.table'),
         pageCount = splitArray(data.JSON).length,
         pagination = document.createElement('div'),
-        pagTitile = document.createElement('span');
+        pagTitile = document.createElement('span')
 
-    pagination.className = 'pagination';
-    pagination.append(pagTitile);
+    pagination.className = 'pagination'
+    pagination.append(pagTitile)
 
     for (let i = 0; i < pageCount; i++) {
-        const pagNum = document.createElement('div');
+        const pagNum = document.createElement('div')
 
-        pagNum.className = 'pagination-number';
+        pagNum.className = 'pagination-number'
         pagNum.innerHTML = i + 1;
 
-        if (i === 0) pagNum.classList.add('current-pagination');
+        if (i === 0) pagNum.classList.add('current-pagination')
 
-        pagination.append(pagNum);
+        pagination.append(pagNum)
     }
 
-    table.insertAdjacentElement('beforebegin', pagination);
+    table.insertAdjacentElement('beforebegin', pagination)
 
-    renderActivePage(data);
+    renderActivePage(data)
 }
 
 //функция отрисовывает страницу, выбранную в пагинации
 function renderActivePage(jsonData) {
-    const pagNums = document.querySelectorAll('.pagination-number');
+    const pagNums = document.querySelectorAll('.pagination-number')
 
     pagNums.forEach((item, i) => {
         item.addEventListener('click', () => {
-            markActivePageInPagination(i);
-            renderCell(jsonData, i + 1);
-        });
+            markActivePageInPagination(i)
+            renderCell(jsonData, i + 1)
+        })
     })
 }
 
 //показывает/отмечает активную страницу на пагинации
 function markActivePageInPagination(pagNum) {
-    const pagNums = document.querySelectorAll('.pagination-number');
+    const pagNums = document.querySelectorAll('.pagination-number')
 
     pagNums.forEach((item, i) => {
         if (item.classList.contains('current-pagination') && i !== pagNum) {
-            item.classList.remove('current-pagination');
+            item.classList.remove('current-pagination')
         } else if (!item.classList.contains('current-pagination') && i === pagNum) {
-            item.classList.add('current-pagination');
+            item.classList.add('current-pagination')
         }
     })
 }
 
-export {renderCell, renderPagination};
+export {renderCell, renderPagination}

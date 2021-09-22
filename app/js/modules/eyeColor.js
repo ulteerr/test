@@ -1,13 +1,13 @@
 //функция закрашивает ячейку "цвет глаз" в соотвутсвующий цвет. 
 //Создает внутри ячейки div с фоновым цветом и цветом текста равные цвету глаз, заданный в ячейке
 function eyeColor(value) {
-    const coloredEye = document.createElement('div');
+    const coloredEye = document.createElement('div')
 
-    coloredEye.className = 'colored-eye';
-    coloredEye.innerHTML = value.innerHTML;
-    value.innerHTML = '';
-    value.append(coloredEye);
-    value.firstChild.style.cssText = `fill: ${value.firstChild.innerHTML};`;
+    coloredEye.className = 'colored-eye'
+    coloredEye.innerHTML = value.innerHTML
+    value.innerHTML = ''
+    value.append(coloredEye)
+    value.firstChild.style.cssText = `fill: ${value.firstChild.innerHTML};`
     
     //Рисуем svg картинку
     coloredEye.innerHTML = '<svg width="64" height="64" viewBox="0 0 64 64" fill="" xmlns="http://www.w3.org/2000/svg">\n' +
@@ -22,8 +22,8 @@ function eyeColor(value) {
         '            <rect width="64" height="64" fill="white"/>\n' +
         '        </clipPath>\n' +
         '    </defs>\n' +
-        '</svg>';
+        '</svg>'
 
 }
 
-export {eyeColor};
+export {eyeColor}
