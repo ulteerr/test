@@ -4,14 +4,14 @@ import {eyeColor} from './eyeColor.js'
 //прорисовка таблицы. Создает строку таблицы с ячейками данных и добавляет их в tbody.
 //При прорисовке данных в колонке "Описание" обрезает about до длины th "Описание" (aboutLength ) деленное на 4.
 //aboutThLength / 4 примерно равно кол-ву символов, которые влезут 2-мя строками в ячейку about
+let aboutTh = document.querySelector('.about')
+let aboutThLength = aboutTh.clientWidth
 
 function renderCell(jsonData, pagNum = 1) {
     localStorage.getItem(jsonData) ? '' : localStorage.setItem(jsonData, JSON.stringify(jsonData))
 
     let data = localStorage.getItem(jsonData) ? JSON.parse(localStorage.getItem(jsonData)) : jsonData
     let tableData = document.querySelector('.main-data')
-    let aboutTh = document.querySelector('.about')
-    let aboutThLength = aboutTh.clientWidth
     let peopleCards = splitArray(data.JSON)[pagNum - 1]
 
     tableData.innerHTML = '';
@@ -24,7 +24,8 @@ function renderCell(jsonData, pagNum = 1) {
         rowTable.innerHTML = `
         <td class='first-name _cell' data-type='text'>${element.name.firstName}</td>
         <td class='last-name _cell' data-type='text'>${element.name.lastName}</td>
-        <td class='about _cell' data-type='text'>${element.about.slice(0, (aboutThLength / 4)) + '...'}</td>
+        <td class='about _cell' data-type='text'>${element.about
+            .slice(0, (aboutThLength / 4)) + '...'}</td>
         <td class='eye-color _cell' data-type='text'>${element.eyeColor}</td>
     `;
 

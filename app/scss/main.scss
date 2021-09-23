@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+@import "block/media";
 
 * {
   margin: 0;
@@ -258,3 +259,10 @@
     border-radius: 20px;
   }
 }
+#block {
+  border-radius: 20px;
+  margin: auto;
+  background: #E5E5E5;
+}
+
+

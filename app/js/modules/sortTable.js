@@ -30,7 +30,7 @@ function checkSelectedTh(index) {
             th.classList.toggle('selected')
             th.removeAttribute('data-order')
         }
-    });
+    })
 }
 
 //функция sortTable() принимает индекс колонки которую нужно отсортировать и order, который используется
