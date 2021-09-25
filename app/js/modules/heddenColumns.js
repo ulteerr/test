@@ -6,8 +6,8 @@ const btnHidden = document.querySelector('.btn-hidden_all'),
     pointsHidden = document.querySelectorAll('[data-hidden]'),
     table = document.querySelector('.table'),
     hiddenBtns = document.querySelectorAll('.btn-hidden'),
-    blockColor = document.getElementById('block')
-
+    blockColor = document.getElementById('block'),
+    btnShow = document.querySelector('.btn-show_all')
 
 
 //функция показывает или прячет содержимое страницы или коллонок
@@ -21,7 +21,13 @@ function hiddenAllColumn() {
             pointsHidden.forEach((item) => {
                 item.setAttribute('data-hidden', 'on')
             })
-        } else if (tableData.dataset.hidden === 'on') {
+        }
+    })
+}
+
+function showAllColumn() {
+    btnShow.addEventListener('click', () => {
+        if (tableData.dataset.hidden === 'on') {
             tableOff()
             let hiddenClass = ['hidden-1', 'hidden-2', 'hidden-3', 'hidden-4']
             table.classList.remove(...hiddenClass)
@@ -61,16 +67,14 @@ function hiddenColumn() {
 
 function tableOn() {
     tableData.setAttribute('data-hidden', 'on')
-    btnHidden.innerHTML = 'Show All'
     tableData.style.display = 'none'
     blockColor.style.display = ''
 }
 
 function tableOff() {
     tableData.setAttribute('data-hidden', 'off')
-    btnHidden.innerHTML = 'Hide All'
     tableData.style.display = ''
     blockColor.style.display = 'none'
 }
 
-export {hiddenColumn, hiddenAllColumn}
+export {hiddenColumn, hiddenAllColumn, showAllColumn}

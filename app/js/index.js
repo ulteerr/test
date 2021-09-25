@@ -2,7 +2,7 @@ import {getData} from './modules/getData.js'
 import {renderCell, renderPagination} from './modules/renderTable.js'
 import {eventSortTable} from './modules/sortTable.js'
 import {editTableData} from './modules/editTableData.js'
-import {hiddenColumn, hiddenAllColumn} from './modules/heddenColumns.js'
+import {hiddenColumn, hiddenAllColumn, showAllColumn} from './modules/heddenColumns.js'
 
 
 //отресовывает таблицу при изменении размера окна
@@ -21,4 +21,5 @@ getData().then((jsonData) => {
     editTableData(jsonData)
     hiddenAllColumn()
     hiddenColumn()
+    showAllColumn()
 })

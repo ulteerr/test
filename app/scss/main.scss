@@ -5,7 +5,8 @@
   margin: 0;
   padding: 0;
 }
-.error{
+
+.error {
   width: 50%;
   border-radius: 20px;
   margin: 100px auto;
@@ -14,6 +15,7 @@
   color: #000;
   text-align: center;
 }
+
 .filters {
   position: absolute;
   width: 130px;
@@ -24,21 +26,39 @@
   border-radius: 20px;
   padding: 10px 10px 10px 10px;
 
-  .btn-hidden_all {
+  .btn-hidden_all,
+  .btn-show_all {
     display: flex;
     justify-content: center;
     align-items: center;
 
     position: absolute;
-    width: 50%;
+    width: 40%;
     height: 30%;
-    top: 90px;
-    margin-left: 20px;
 
     background: #DCDCDC;
     border-radius: 20px;
     border: none;
   }
+
+  .btn-hidden_all:hover,
+  .btn-show_all:hover {
+    background: #2B2A2C;
+    color: #FFFF;
+  }
+
+  .btn-hidden_all {
+    top: 90px;
+    margin-left: 3px;
+    cursor: pointer;
+  }
+
+  .btn-show_all {
+    top: 90px;
+    margin-left: 70px;
+    cursor: pointer;
+  }
+
 
   .btn-hidden {
     position: relative;
@@ -70,6 +90,7 @@
 .hidden-column1[data-hidden = 'on'] {
   content: url('../img/on1.svg');
 }
+
 .hidden-column2[data-hidden = 'off'] {
   content: url('../img/off2.svg');
 }
@@ -77,6 +98,7 @@
 .hidden-column2[data-hidden = 'on'] {
   content: url('../img/on2.svg');
 }
+
 .hidden-column3[data-hidden = 'off'] {
   content: url('../img/off3.svg');
 }
@@ -108,8 +130,7 @@
 .hidden-column,
 .hidden-column1,
 .hidden-column2,
-.hidden-column3
-{
+.hidden-column3 {
   width: 15px;
   height: 15px;
   position: absolute;
@@ -145,26 +166,32 @@
     content: "▲"
   }
 
-  .fn {
+  .fn,
+  .ln,
+  .ec {
     border-radius: 20px;
     background: #BBE2D6;
     width: 15%;
   }
 
+  .fn:hover,
+  .ln:hover,
+  .a:hover,
+  .ec:hover {
+    border: 2px solid #ffffff;
+  }
+
   .ln {
-    border-radius: 20px;
     background: #BBCBE2;
-    width: 15%;
   }
 
   .a {
     border-radius: 20px;
     background: #C3BBE2;
   }
+
   .ec {
-    border-radius: 20px;
     background-color: #DDBBE2;
-    width: 15%;
   }
 
   .main-data {
@@ -259,6 +286,7 @@
     border-radius: 20px;
   }
 }
+
 #block {
   border-radius: 20px;
   margin: auto;
